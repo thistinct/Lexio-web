@@ -66,38 +66,138 @@
     return { segs: segs, same: dp[0][0] };
   }
 
-  function render(key) {
-    var ex = examples[key];
-    head.textContent = ex.head;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var panel = document.getElementById("panel-demo");
+  var keys = Array.prototype.map.call(tabs, function (t) { return t.getAttribute("data-tab"); });
+  var current = "improve";
+  var writingTimer = null;
+
+  function fill(ex, animate) {
     out.textContent = "";
     var a = words(original), b = words(ex.text);
     var d = diff(a, b);
     var changeRatio = 1 - d.same / Math.max(a.length, b.length);
-    if (changeRatio > 0.6) {
-      out.textContent = ex.text;
-    } else {
-      d.segs.forEach(function (seg, idx) {
-        if (idx > 0) out.appendChild(document.createTextNode(" "));
-        var text = seg.words.join(" ");
-        if (seg.kind === "same") { out.appendChild(document.createTextNode(text)); return; }
-        var el = document.createElement(seg.kind);
-        el.textContent = text;
-        out.appendChild(el);
+    var n = 0;
+    function add(parent, text) {
+      if (!animate) { parent.appendChild(document.createTextNode(text)); return; }
+      text.split(/(\s+)/).forEach(function (piece) {
+        if (!piece) return;
+        if (/^\s+$/.test(piece)) { parent.appendChild(document.createTextNode(piece)); return; }
+        var w = document.createElement("span");
+        w.className = "w";
+        w.style.animationDelay = (n++ * 28) + "ms";
+        w.textContent = piece;
+        parent.appendChild(w);
       });
     }
-    out.classList.remove("fade");
-    void out.offsetWidth;
-    out.classList.add("fade");
+    if (changeRatio > 0.6) { add(out, ex.text); return; }
+    d.segs.forEach(function (seg, idx) {
+      if (idx > 0) out.appendChild(document.createTextNode(" "));
+      var text = seg.words.join(" ");
+      if (seg.kind === "same") { add(out, text); return; }
+      // Changed runs appear as a whole, so their highlight and
+      // strike-through never show up empty.
+      var el = document.createElement(seg.kind);
+      el.textContent = text;
+      if (animate) {
+        el.className = "w";
+        el.style.animationDelay = (n * 28) + "ms";
+        n += seg.words.length;
+      }
+      out.appendChild(el);
+    });
+  }
+
+  function render(key, animate) {
+    current = key;
+    var ex = examples[key];
+    clearTimeout(writingTimer);
+    tabs.forEach(function (t) {
+      var on = t.getAttribute("data-tab") === key;
+      t.classList.toggle("on", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      // Restart the tab's progress bar.
+      if (on) { t.classList.remove("on"); void t.offsetWidth; t.classList.add("on"); }
+    });
+    if (!animate) { head.textContent = ex.head; fill(ex, false); return; }
+    // Like the app: a moment of "Writing…", then the words stream in.
+    head.innerHTML = '<span class="writing"><span class="dots"><i></i><i></i><i></i></span>Writing…</span>';
+    out.textContent = "";
+    writingTimer = setTimeout(function () {
+      head.textContent = ex.head;
+      fill(ex, true);
+    }, 650);
+  }
+
+  // Step through the tabs on their own while the panel is on screen,
+  // until the visitor picks one or points at the panel.
+  var CYCLE = 5000;
+  var cycleTimer = null, visible = false, hovered = false, stopped = reduce;
+  panel.style.setProperty("--cycle", CYCLE + "ms");
+  function schedule() {
+    clearTimeout(cycleTimer);
+    var running = !stopped && visible && !hovered;
+    panel.classList.toggle("auto", running);
+    if (!running) return;
+    cycleTimer = setTimeout(function () {
+      render(keys[(keys.indexOf(current) + 1) % keys.length], true);
+      schedule();
+    }, CYCLE);
   }
 
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
-      tabs.forEach(function (t) { t.classList.remove("on"); t.setAttribute("aria-selected", "false"); });
-      tab.classList.add("on");
-      tab.setAttribute("aria-selected", "true");
-      render(tab.getAttribute("data-tab"));
+      stopped = true;
+      schedule();
+      render(tab.getAttribute("data-tab"), !reduce);
     });
   });
+  panel.addEventListener("mouseenter", function () { hovered = true; schedule(); });
+  panel.addEventListener("mouseleave", function () { hovered = false; schedule(); });
+  panel.addEventListener("focusin", function () { stopped = true; schedule(); });
 
-  render("improve");
+  render("improve", false);
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      schedule();
+    }, { threshold: 0.5 }).observe(panel);
+  }
+})();
+
+// Scroll reveals and the nav shadow.
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var nav = document.querySelector(".nav");
+  function onScroll() { nav.classList.toggle("scrolled", window.scrollY > 8); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  var mock = document.querySelector(".hero-visual");
+  if (reduce || !("IntersectionObserver" in window)) { if (mock) mock.classList.add("play"); return; }
+  new IntersectionObserver(function (entries, obs) {
+    if (entries[0].isIntersecting) { mock.classList.add("play"); obs.disconnect(); }
+  }, { threshold: 0.35 }).observe(mock);
+  var groups = [
+    ".section-head", ".demo-copy", "#panel-demo", ".privacy-card", ".apps-note",
+    ".req-grid > div:first-child", ".final-card",
+    ".cards > *", ".apps li", ".req-list li", ".faq details"
+  ];
+  var items = [];
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      // Stagger siblings in grids and lists.
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      if (/>|li|details/.test(sel)) el.style.setProperty("--i", Math.min(i, 8));
+      el.classList.add("reveal");
+      items.push(el);
+    });
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+  items.forEach(function (el) { io.observe(el); });
 })();
