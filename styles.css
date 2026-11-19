@@ -339,6 +339,8 @@ h2 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; font-weight: 720; }
 }
 .final-card img { width: 112px; height: 112px; margin: 0 auto 18px; filter: drop-shadow(0 12px 22px rgba(90,60,220,.3)); }
 .final-card p { color: var(--text-2); margin: 12px auto 28px; max-width: 30em; font-size: 18px; }
+.final-card .final-notes { margin: 16px auto 0; font-size: 14px; }
+.final-notes a { color: var(--accent); }
 
 /* Footer */
 .footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 13.5px; color: var(--text-3); }
