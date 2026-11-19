@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lexio · A private writing assistant for your Mac</title>
+  <meta name="description" content="Lexio checks your spelling, grammar and tone in every app on your Mac, using Apple's on-device model. Nothing you write leaves your Mac.">
+  <meta name="theme-color" content="#7c5cf2">
+  <link rel="canonical" href="https://lexio.thistinct.tools/">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lexio.thistinct.tools/">
+  <meta property="og:title" content="Lexio: a private writing assistant for your Mac">
+  <meta property="og:description" content="Spelling, grammar and tone in every app, from Apple's on-device model. Nothing you write leaves your Mac.">
+  <meta property="og:image" content="https://lexio.thistinct.tools/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Lexio home">
+        <img src="assets/icon-256.png" alt="" width="32" height="32">
+        <span>Lexio</span>
+      </a>
+      <nav aria-label="Sections">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-small btn-soon" href="#get" aria-label="Lexio is coming soon">Coming soon</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span> For macOS 26 on Apple silicon</p>
+          <h1>Write clearly in every app.<br><span class="grad-text">Keep every word on your Mac.</span></h1>
+          <p class="lead">Lexio checks your spelling, grammar and tone as you type, and rewrites any selection in a click. It runs on Apple's on-device model, so nothing you write is ever sent anywhere.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#get">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" /></svg>
+              Coming soon for Mac
+            </a>
+            <a class="btn btn-ghost" href="#features">See how it works</a>
+          </div>
+          <ul class="hero-points" aria-label="Highlights">
+            <li>Works system-wide</li>
+            <li>No account</li>
+            <li>Works offline</li>
+          </ul>
+        </div>
+
+        <!-- Product mock: built in HTML so it stays sharp -->
+        <div class="hero-visual" aria-label="Illustration: Lexio underlining mistakes in an email and suggesting a fix">
+          <div class="window" aria-hidden="true">
+            <div class="window-bar">
+              <span class="lights"><i></i><i></i><i></i></span>
+              <span class="window-title">New Message</span>
+            </div>
+            <div class="mail-fields">
+              <div><span>To:</span> Ana Ruiz</div>
+              <div><span>Subject:</span> Launch plan</div>
+            </div>
+            <div class="mail-body">
+              <p>Hi Ana,</p>
+              <p>Thanks for the draft, I <span class="ul ul-red">recieved</span> it this morning. I think <span class="ul ul-blue">their are</span> a few things we should fix before Friday.</p>
+              <p><span class="sel">Send me the final numbers today.</span><span class="handle"><svg viewBox="0 0 20 20"><path d="M3 5h10M3 9h8M3 13h5" /><path d="m11 13 2 2 4-4.5" /></svg></span> <span class="tone-pill">Sounds blunt</span></p>
+            </div>
+          </div>
+
+          <div class="panel mini" aria-hidden="true">
+            <div class="tabs">
+              <span class="tab on">Improve</span><span class="tab">Rephrase</span><span class="tab">Friendly</span><span class="tab">Formal</span>
+            </div>
+            <div class="panel-head">Softer and clearer</div>
+            <p class="panel-text"><del>Send</del> <ins>Could you send</ins> me the final numbers <del>today.</del> <ins>today, please?</ins></p>
+            <div class="panel-foot">
+              <span class="pbtn">Revise…</span>
+              <span class="spacer"></span>
+              <span class="pbtn">Close</span>
+              <span class="pbtn pbtn-accent">Accept</span>
+            </div>
+          </div>
+
+          <div class="glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three pillars -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">What it does</p>
+          <h2>Help where you're already typing</h2>
+          <p class="sub">No editor to paste into and no new app to learn. Lexio works inside Mail, Messages, Slack, your browser and everywhere else you write.</p>
+        </div>
+
+        <div class="cards three">
+          <article class="card">
+            <div class="tile tile-1" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 8h16M4 13h10" /><path d="M4 18c1.2-1.2 2.3-1.2 3.5 0s2.3 1.2 3.5 0 2.3-1.2 3.5 0" /></svg>
+            </div>
+            <h3>Underlines as you type</h3>
+            <p>Mistakes get a quiet underline in the app you're using. Click one to see the fix and why, then apply it or ignore it.</p>
+            <ul class="legend">
+              <li><span class="sw ul ul-red" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Spelling</li>
+              <li><span class="sw ul ul-blue" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Grammar</li>
+              <li><span class="sw ul ul-purple" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Caught by the on-device model</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="tile tile-2" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h9M5 17h6" /><path d="m14 17 2.2 2.2L21 14" /></svg>
+            </div>
+            <h3>Rewrite any selection</h3>
+            <p>Select text and a small round button appears beside it. Or press <span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>L</kbd>.</span> Pick Improve, Rephrase, Translate, Shorten, Friendly or Formal, see exactly what changes, and Accept.</p>
+          </article>
+
+          <article class="card">
+            <div class="tile tile-3" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 6h14v9H10l-4 3v-3H5z" /><path d="M9.5 10.5h.01M14.5 10.5h.01" /></svg>
+            </div>
+            <h3>Know how you sound</h3>
+            <p>When a message might come across as blunt, harsh or demanding, a small label appears at the end of it. One click shows a softer way to say the same thing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive panel demo -->
+    <section class="section section-tint" id="demo">
+      <div class="wrap demo-grid">
+        <div class="demo-copy">
+          <p class="kicker">Select, pick, accept</p>
+          <h2>One panel for every kind of rewrite</h2>
+          <p class="sub">Lexio shows its suggestion right under your selection, with removed words struck through and new words highlighted, so you always know what you're accepting.</p>
+          <ul class="checks">
+            <li><strong>Revise in your own words.</strong> Ask for “make it sound more confident” and get a new version.</li>
+            <li><strong>Keeps your language.</strong> Spanish stays Spanish unless you ask to translate.</li>
+            <li><strong>Undo works.</strong> If you change your mind after Accept, press <span class="keys"><kbd>⌘</kbd><kbd>Z</kbd></span> as usual.</li>
+          </ul>
+          <p class="note">Try the tabs. These are example results; real ones are written by the model on your Mac.</p>
+        </div>
+
+        <div class="panel big" id="panel-demo">
+          <div class="tabs" role="tablist" aria-label="Rewrite styles">
+            <button class="tab on" role="tab" aria-selected="true" data-tab="improve">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m3 17 9-9M12 3v2M15.5 4.5 14 6M17 8h-2M10 3.5l.6.9M5.5 8.5l.9.6" /></svg>Improve</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="rephrase">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 9a6 6 0 0 1 10.5-3.5L16 7M16 3v4h-4M16 11a6 6 0 0 1-10.5 3.5L4 13M4 17v-4h4" /></svg>Rephrase</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="translate">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" /><path d="M3 10h14M10 3c2 2 3 4.3 3 7s-1 5-3 7c-2-2-3-4.3-3-7s1-5 3-7z" /></svg>Translate</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="shorten">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 17l5-5M8 16v-4H4M17 3l-5 5M12 4v4h4" /></svg>Shorten</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="friendly">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" /><path d="M7 11.5c.8 1.2 1.8 1.8 3 1.8s2.2-.6 3-1.8M7.5 8h.01M12.5 8h.01" /></svg>Friendly</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="formal">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="7" width="14" height="10" rx="2" /><path d="M7.5 7V5.5a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5V7M3 11.5h14" /></svg>Formal</button>
+          </div>
+          <div class="panel-body">
+            <div class="panel-head" id="demo-head">Fixed capitals, punctuation and “its”</div>
+            <p class="panel-text" id="demo-text" aria-live="polite"></p>
+            <p class="panel-original"><span>You selected</span> <span id="demo-original"></span></p>
+          </div>
+          <div class="panel-foot">
+            <span class="pbtn">Revise…</span>
+            <span class="pbtn icon" aria-label="Copy"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="9" height="10" rx="2" /><path d="M13 4H6a2 2 0 0 0-2 2v8" /></svg></span>
+            <span class="spacer"></span>
+            <span class="pbtn">Close</span>
+            <span class="pbtn pbtn-accent">Accept</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="section privacy" id="privacy">
+      <div class="wrap">
+        <div class="privacy-card">
+          <div class="privacy-head">
+            <div class="lock" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" /><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" /><path d="M12 14.5v2.5" /></svg>
+            </div>
+            <div>
+              <p class="kicker light">Private by design</p>
+              <h2>Your writing never leaves your Mac</h2>
+              <p class="sub light">Most writing assistants send what you type to their servers. Lexio doesn't have any. It uses the Mac's own spell checker and Apple's on-device model, the one behind Apple Intelligence, and does all of its work right on your computer.</p>
+            </div>
+          </div>
+          <div class="cards four">
+            <div class="mini-card">
+              <h3>On-device model</h3>
+              <p>Checks and rewrites come from Apple's Foundation Models running on your Mac's chip.</p>
+            </div>
+            <div class="mini-card">
+              <h3>No account</h3>
+              <p>Nothing to sign up for and nothing to sign in to.</p>
+            </div>
+            <div class="mini-card">
+              <h3>No servers</h3>
+              <p>Lexio doesn't send your text, or anything else, over the internet.</p>
+            </div>
+            <div class="mini-card">
+              <h3>Works offline</h3>
+              <p>On a plane or off the grid, it works just the same.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Everywhere -->
+    <section class="section" id="apps">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Everywhere you write</p>
+          <h2>Mail, chat, browser and the rest</h2>
+          <p class="sub">Lexio works through macOS itself, so it follows you from app to app. It's been tested in:</p>
+        </div>
+        <ul class="apps" aria-label="Apps Lexio has been tested in">
+          <li>Mail</li><li>Messages</li><li>Slack</li><li>Safari</li><li>Chrome</li><li>Notes</li><li>TextEdit</li>
+        </ul>
+        <p class="apps-note">Some apps share less of their text with macOS. There, the shortcut and the selection button still work even when underlines can't be drawn.</p>
+      </div>
+    </section>
+
+    <!-- Control -->
+    <section class="section section-tint" id="control">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">On your terms</p>
+          <h2>Quiet when you want it to be</h2>
+        </div>
+        <div class="cards three compact">
+          <div class="card small">
+            <h3>Ignore for good</h3>
+            <p>Ignore a word once and Lexio remembers it in every app. Settings lists what you've ignored and learned, so you can take it back.</p>
+          </div>
+          <div class="card small">
+            <h3>Pause anytime</h3>
+            <p>Pause for an hour from the menu bar, or turn Lexio off in a single app.</p>
+          </div>
+          <div class="card small">
+            <h3>Your languages</h3>
+            <p>Choose which languages to check. Paragraphs in other languages are left alone. Tuned for English and Spanish today.</p>
+          </div>
+          <div class="card small">
+            <h3>Translate</h3>
+            <p>Turn a selection into Spanish, French, German, Japanese and more without leaving the app you're in.</p>
+          </div>
+          <div class="card small">
+            <h3>Lives in the menu bar</h3>
+            <p>No Dock icon and no window in the way. The icon shows a typing bubble while it checks.</p>
+          </div>
+          <div class="card small">
+            <h3>Tone hints, optional</h3>
+            <p>Don't want them? Turn tone hints off in Settings and keep just spelling and grammar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="section" id="requirements">
+      <div class="wrap req-grid">
+        <div>
+          <p class="kicker">Requirements</p>
+          <h2>What you need</h2>
+          <p class="sub">Lexio runs on Apple Intelligence, so it needs a Mac that supports it. If something is missing, Lexio tells you on first launch.</p>
+        </div>
+        <ul class="req-list">
+          <li><span class="req-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" /><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" /></svg></span><div><strong>Apple silicon</strong><span>Any Mac with an M-series chip</span></div></li>
+          <li><span class="req-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2" /><path d="M8 20h8M12 16.5V20" /></svg></span><div><strong>macOS 26 or later</strong><span>Lexio uses the Foundation Models framework</span></div></li>
+          <li><span class="req-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3 1.4 5.3L12 15l-4.2 3 1.4-5.3L5 9.7l5.2-1.8z" /></svg></span><div><strong>Apple Intelligence turned on</strong><span>System Settings › Apple Intelligence &amp; Siri</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-tint" id="faq">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <p class="kicker">Questions</p>
+          <h2>Good to know</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Does Lexio send my writing anywhere?</summary>
+            <p>No. Every check and rewrite happens on your Mac, using the system spell checker and Apple's on-device model. Lexio has no servers and no account, and it doesn't connect to the internet.</p>
+          </details>
+          <details>
+            <summary>Why does it ask for Accessibility access?</summary>
+            <p>To read what you're typing in other apps and to put a fix in place when you press Accept, Lexio uses the macOS Accessibility feature. A setup window walks you through allowing it in System Settings › Privacy &amp; Security › Accessibility.</p>
+          </details>
+          <details>
+            <summary>Why isn't it on the Mac App Store?</summary>
+            <p>Apps from the App Store can't use the Accessibility feature that lets Lexio work inside your other apps. Lexio will be a signed download, checked by Apple, straight from this site.</p>
+          </details>
+          <details>
+            <summary>Which languages does it check?</summary>
+            <p>Spelling works in the languages your Mac's spell checker knows. The deeper grammar and tone checks are tuned and tested for English and Spanish today, and translation covers many more.</p>
+          </details>
+          <details>
+            <summary>Will it work on my Mac?</summary>
+            <p>If your Mac has Apple silicon, runs macOS 26 or later and has Apple Intelligence turned on, yes. On first launch Lexio tells you plainly if something is missing.</p>
+          </details>
+          <details>
+            <summary>When can I get it?</summary>
+            <p>Lexio is in active development. The download will be right here as soon as it's ready.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section final" id="get">
+      <div class="wrap">
+        <div class="final-card">
+          <img src="assets/icon-256.png" alt="Lexio app icon" width="112" height="112">
+          <h2>Lexio is almost here</h2>
+          <p>A signed download for Macs with Apple silicon and macOS 26 is on the way.</p>
+          <span class="btn btn-primary is-disabled" aria-disabled="true">Download coming soon</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="brand small"><img src="assets/icon-256.png" alt="" width="22" height="22"><span>Lexio</span></div>
+      <p>A private writing assistant for macOS. Apple, Mac, macOS and Apple Intelligence are trademarks of Apple Inc.</p>
+      <p>© 2026 thistinct</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
