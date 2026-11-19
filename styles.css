@@ -343,7 +343,9 @@ h2 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; font-weight: 720; }
 /* Footer */
 .footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 13.5px; color: var(--text-3); }
 .footer-inner { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
-.footer-inner p:last-child { margin-left: auto; }
+.powered { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--text-3); transition: color .2s ease; }
+.powered:hover { color: var(--text); }
+.thistinct-logo { height: 11px; width: auto; transform: translateY(1px); }
 
 /* Laptops with short screens (13" at default scaling is about 1440×800 or less) */
 @media (max-height: 860px) and (min-width: 901px) {
@@ -390,7 +392,7 @@ h2 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; font-weight: 720; }
   .privacy-head { grid-template-columns: 1fr; gap: 18px; }
   .panel.big .tabs { justify-content: flex-start; }
   .panel-body { min-height: 0; }
-  .footer-inner p:last-child { margin-left: 0; }
+  .powered { margin-left: 0; }
   .apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 8px; padding: 22px 12px 16px; width: 100%; border-radius: 24px; }
   .apps li { font-size: 12.5px; }
   .apps li img { width: 56px; height: 56px; }
