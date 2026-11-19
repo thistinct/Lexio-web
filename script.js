@@ -201,3 +201,89 @@
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
   items.forEach(function (el) { io.observe(el); });
 })();
+
+// Download buttons. Releases are published on this repository's GitHub
+// releases by the app's Release workflow. Until the first one exists, or if
+// GitHub can't be reached, the page keeps its "Coming soon" state.
+(function () {
+  var API = "https://api.github.com/repos/thistinct/lexio-web/releases/latest";
+  var CACHE_KEY = "lexio-latest-release";
+  var CACHE_MS = 60 * 60 * 1000;
+
+  function el(name) { return document.querySelector('[data-download="' + name + '"]'); }
+
+  function fromCache() {
+    try {
+      var c = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+      if (c && Date.now() - c.at < CACHE_MS) return c.release;
+    } catch (e) {}
+    return null;
+  }
+  function toCache(release) {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), release: release })); } catch (e) {}
+  }
+
+  // Keeps only what the page needs from GitHub's answer.
+  function pick(data) {
+    if (!data || data.draft || data.prerelease || !data.tag_name) return null;
+    var version = String(data.tag_name).replace(/^v/, "");
+    var assets = data.assets || [];
+    var dmg = null;
+    for (var i = 0; i < assets.length; i++) {
+      if (assets[i].name === "Lexio-" + version + ".dmg") { dmg = assets[i]; break; }
+      if (assets[i].name === "Lexio.dmg") dmg = assets[i];
+    }
+    if (!dmg) return null;
+    return { version: version, url: dmg.browser_download_url, size: dmg.size, notes: data.html_url };
+  }
+
+  function show(r) {
+    var mb = r.size ? " · " + Math.max(1, Math.round(r.size / 1048576)) + " MB" : "";
+
+    var nav = el("nav");
+    if (nav) {
+      nav.textContent = "Download";
+      nav.href = r.url;
+      nav.setAttribute("aria-label", "Download Lexio " + r.version);
+    }
+    var hero = el("hero");
+    if (hero) {
+      hero.href = r.url;
+      var label = hero.querySelector("[data-download-label]");
+      if (label) label.textContent = "Download for Mac";
+    }
+    var title = el("final-title");
+    if (title) title.textContent = "Get Lexio";
+    var text = el("final-text");
+    if (text) text.textContent = "Signed and checked by Apple. For Macs with Apple silicon and macOS 26 or later.";
+    var final = el("final");
+    if (final) {
+      final.textContent = "Download Lexio " + r.version;
+      final.href = r.url;
+      final.classList.remove("is-disabled");
+      final.removeAttribute("aria-disabled");
+    }
+    var notes = el("notes");
+    if (notes) {
+      notes.textContent = "Version " + r.version + mb + " · ";
+      var a = document.createElement("a");
+      a.href = r.notes;
+      a.textContent = "What's new";
+      notes.appendChild(a);
+      notes.hidden = false;
+    }
+    var faq = el("faq");
+    if (faq) faq.textContent = "Now. Lexio " + r.version + " is ready to download from this page, and new versions appear here as soon as they're released.";
+  }
+
+  var cached = fromCache();
+  if (cached) { show(cached); return; }
+  if (!window.fetch) return;
+  fetch(API, { headers: { Accept: "application/vnd.github+json" } })
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) {
+      var r = pick(data);
+      if (r) { toCache(r); show(r); }
+    })
+    .catch(function () {});
+})();

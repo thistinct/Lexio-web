@@ -14,5 +14,5 @@ DNS: a `CNAME` record for `lexio` in the `thistinct.tools` zone pointing to `thi
 
 - App icon sizes in `assets/` come from `Support/Icon/AppIcon.icns` in the app repo.
 - `assets/og.jpg` is the image shown when the link is shared.
-- The download button is a "coming soon" placeholder until signed builds exist. When they do, point the buttons with `href="#get"` and the one in the `#get` section at the download.
+- Downloads: the app repo's Release workflow publishes each version as a release on this repository (`Lexio-X.Y.Z.dmg`, plus `Lexio.dmg` under a fixed name). `script.js` asks GitHub for the latest release when the page loads (cached for an hour) and turns the elements marked `data-download` into download links. With no published release, or if GitHub can't be reached, the page keeps its "Coming soon" state. Drafts and pre-releases are ignored. The always-latest link is `https://github.com/thistinct/lexio-web/releases/latest/download/Lexio.dmg`.
 - Keep the copy in step with the app: features, tested apps and requirements are taken from the app's README, CHANGELOG and Settings text.

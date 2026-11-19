@@ -16,7 +16,7 @@
   <meta property="og:description" content="Spelling, grammar and tone in every app, from Apple's on-device model. Nothing you write leaves your Mac.">
   <meta property="og:image" content="https://lexio.thistinct.tools/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -34,7 +34,7 @@
         <a href="#requirements">Requirements</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn-small btn-soon" href="#get" aria-label="Lexio is coming soon">Coming soon</a>
+      <a class="btn btn-small btn-soon" href="#get" aria-label="Lexio is coming soon" data-download="nav">Coming soon</a>
     </div>
   </header>
 
@@ -47,9 +47,9 @@
           <h1>Write clearly in every app.<br><span class="grad-text">Keep every word on your Mac.</span></h1>
           <p class="lead">Lexio checks your spelling, grammar and tone as you type, and rewrites any selection in a click. It runs on Apple's on-device model, so nothing you write is ever sent anywhere.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#get">
+            <a class="btn btn-primary" href="#get" data-download="hero">
               <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" /></svg>
-              Coming soon for Mac
+              <span data-download-label>Coming soon for Mac</span>
             </a>
             <a class="btn btn-ghost" href="#features">See how it works</a>
           </div>
@@ -326,7 +326,7 @@
           </details>
           <details>
             <summary>When can I get it?</summary>
-            <p>Lexio is in active development. The download will be right here as soon as it's ready.</p>
+            <p data-download="faq">Lexio is in active development. The download will be right here as soon as it's ready.</p>
           </details>
         </div>
       </div>
@@ -337,9 +337,10 @@
       <div class="wrap">
         <div class="final-card">
           <img src="assets/icon-256.png" alt="Lexio app icon" width="112" height="112">
-          <h2>Lexio is almost here</h2>
-          <p>A signed download for Macs with Apple silicon and macOS 26 is on the way.</p>
-          <span class="btn btn-primary is-disabled" aria-disabled="true">Download coming soon</span>
+          <h2 data-download="final-title">Lexio is almost here</h2>
+          <p data-download="final-text">A signed download for Macs with Apple silicon and macOS 26 is on the way.</p>
+          <a class="btn btn-primary is-disabled" aria-disabled="true" data-download="final">Download coming soon</a>
+          <p class="final-notes" data-download="notes" hidden></p>
         </div>
       </div>
     </section>
@@ -356,6 +357,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4" defer></script>
+  <script src="script.js?v=5" defer></script>
 </body>
 </html>
